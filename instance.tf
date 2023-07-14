@@ -113,7 +113,7 @@ resource "aws_security_group" "elb-sg" {
 
 resource "aws_launch_configuration" "web_lc" {
   name                      = "web-launch-config"
-  image_id                  = "ami-053b0d53c279acc90"
+  image_id                  = "ami-01428ed083fc6ed14"
   instance_type             = "t2.micro"
   associate_public_ip_address = true  # Associate a public IP with instances launched from this launch configuration
   security_groups           = [aws_security_group.bastion-sg.id]
