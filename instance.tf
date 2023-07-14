@@ -117,14 +117,8 @@ resource "aws_launch_configuration" "web_lc" {
   instance_type             = "t2.micro"
   associate_public_ip_address = true  # Associate a public IP with instances launched from this launch configuration
   security_groups           = [aws_security_group.bastion-sg.id]
+  iam_instance_profile      = "arn:aws:iam::086508667280:instance-profile/AWSCodeDeployForEC2" 
 
-  user_data = <<-EOL
-    #!/bin/bash -xe
-    sudo su
-    apt-get update -y
-    apt install apache2 -y
-    systemctl status apache2
-  EOL
 }
 
 resource "aws_autoscaling_group" "web_asg" {
